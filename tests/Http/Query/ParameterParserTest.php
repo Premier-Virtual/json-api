@@ -50,7 +50,7 @@ class ParameterParserTest extends BaseTestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -64,7 +64,7 @@ class ParameterParserTest extends BaseTestCase
     /**
      * @inheritdoc
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
 
@@ -182,10 +182,11 @@ class ParameterParserTest extends BaseTestCase
      *
      * Issue #58 @see https://github.com/neomerx/json-api/issues/58
      *
-     * @expectedException \Neomerx\JsonApi\Exceptions\JsonApiException
+     *
      */
     public function testInvalidPageParams()
     {
+        $this->expectException(\Neomerx\JsonApi\Exceptions\JsonApiException::class);
         $input = [
             'page' => '2',
         ];
@@ -198,10 +199,11 @@ class ParameterParserTest extends BaseTestCase
      *
      * Issue #58 @see https://github.com/neomerx/json-api/issues/58
      *
-     * @expectedException \Neomerx\JsonApi\Exceptions\JsonApiException
+     *
      */
     public function testInvalidFilterParams()
     {
+        $this->expectException(\Neomerx\JsonApi\Exceptions\JsonApiException::class);
         $input = [
             'filter' => 'whatever',
         ];
@@ -215,10 +217,11 @@ class ParameterParserTest extends BaseTestCase
      *
      * Issue #58 @see https://github.com/neomerx/json-api/issues/58
      *
-     * @expectedException \Neomerx\JsonApi\Exceptions\JsonApiException
+     *
      */
     public function testInvalidIncludeParams()
     {
+        $this->expectException(\Neomerx\JsonApi\Exceptions\JsonApiException::class);
         $input = [
             'include' => ['whatever'],
         ];
@@ -232,10 +235,11 @@ class ParameterParserTest extends BaseTestCase
      *
      * Issue #58 @see https://github.com/neomerx/json-api/issues/58
      *
-     * @expectedException \Neomerx\JsonApi\Exceptions\JsonApiException
+     *
      */
     public function testInvalidSortParams()
     {
+        $this->expectException(\Neomerx\JsonApi\Exceptions\JsonApiException::class);
         $input = [
             'sort' => ['whatever'],
         ];
@@ -279,10 +283,11 @@ class ParameterParserTest extends BaseTestCase
     /**
      * Test miss field in sort params. Sample /posts/1?fields[posts][foo]=title
      *
-     * @expectedException \Neomerx\JsonApi\Exceptions\JsonApiException
+     *
      */
     public function testInvalidFieldSetWithMultiDimensionArray()
     {
+        $this->expectException(\Neomerx\JsonApi\Exceptions\JsonApiException::class);
         $input = [
             'fields' => ['type' => ['subtype' => 'fields1,fields2']]
         ];

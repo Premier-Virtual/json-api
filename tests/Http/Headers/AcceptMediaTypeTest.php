@@ -1,4 +1,5 @@
-<?php namespace Neomerx\Tests\JsonApi\Http\Headers;
+<?php
+namespace Neomerx\Tests\JsonApi\Http\Headers;
 
 /**
  * Copyright 2015-2017 info@neomerx.com
@@ -16,8 +17,9 @@
  * limitations under the License.
  */
 
-use \Neomerx\Tests\JsonApi\BaseTestCase;
-use \Neomerx\JsonApi\Http\Headers\AcceptMediaType;
+use InvalidArgumentException;
+use Neomerx\JsonApi\Http\Headers\AcceptMediaType;
+use Neomerx\Tests\JsonApi\BaseTestCase;
 
 /**
  * @package Neomerx\Tests\JsonApi
@@ -27,50 +29,55 @@ class AcceptMediaTypeTest extends BaseTestCase
     /**
      * Test invalid constructor parameters.
      *
-     * @expectedException \InvalidArgumentException
+     *
      */
     public function testInvalidConstructorParams1()
     {
+        $this->expectException(InvalidArgumentException::class);
         new AcceptMediaType(1, null, 'subtype');
     }
 
     /**
      * Test invalid constructor parameters.
      *
-     * @expectedException \InvalidArgumentException
+     *
      */
     public function testInvalidConstructorParams2()
     {
+        $this->expectException(InvalidArgumentException::class);
         new AcceptMediaType(1, 'type', null);
     }
 
     /**
      * Test invalid constructor parameters.
      *
-     * @expectedException \InvalidArgumentException
+     *
      */
     public function testInvalidConstructorParams4()
     {
+        $this->expectException(InvalidArgumentException::class);
         new AcceptMediaType(1, 'type', 'subtype', null, 5);
     }
 
     /**
      * Test invalid constructor parameters.
      *
-     * @expectedException \InvalidArgumentException
+     *
      */
     public function testInvalidConstructorParams6()
     {
+        $this->expectException(InvalidArgumentException::class);
         new AcceptMediaType(1, 'type', 'subtype', null, 0.4, 1234);
     }
 
     /**
      * Test invalid constructor parameters.
      *
-     * @expectedException \InvalidArgumentException
+     *
      */
     public function testInvalidConstructorParams7()
     {
+        $this->expectException(InvalidArgumentException::class);
         new AcceptMediaType(-1, 'type', 'subtype', null, 0.4, null);
     }
 }
