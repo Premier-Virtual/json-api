@@ -38,7 +38,7 @@ class ContainerTest extends BaseTestCase
     /**
      * Set up.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->factory = new Factory();
@@ -88,11 +88,10 @@ class ContainerTest extends BaseTestCase
 
     /**
      * Test container.
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testRegisterInvalidSchemaMapping1()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->factory->createContainer([
             '' => AuthorSchema::class,
         ]);
@@ -100,11 +99,10 @@ class ContainerTest extends BaseTestCase
 
     /**
      * Test container.
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testRegisterInvalidSchemaMapping2()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->factory->createContainer([
             Author::class => '',
         ]);
@@ -112,11 +110,10 @@ class ContainerTest extends BaseTestCase
 
     /**
      * Test container.
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testRegisterInvalidSchemaMapping3()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $container = new Container($this->factory, [
             Author::class => AuthorSchema::class,
         ]);
