@@ -110,7 +110,7 @@ class Stack implements StackInterface
     /**
      * @inheritdoc
      */
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->stack);
     }
