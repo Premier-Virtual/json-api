@@ -102,7 +102,7 @@ class Stack implements StackInterface
     /**
      * @inheritdoc
      */
-    public function count()
+    public function count(): int
     {
         return $this->size;
     }
